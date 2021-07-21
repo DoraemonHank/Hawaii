@@ -1,0 +1,149 @@
+<!-- 
+    ======第1頁============
+    1. 設定google font字體
+    2. 設定header : 分2部分
+       - Logo:
+       - nav bar(此project的<nav>放在header裡) 
+    3. 在<main>裡面建立第一個section
+    4. 在第一個section裡面加入背景圖片(image part of the first page)
+    5. <div class="filter">讓背景照片被比較黑
+    6. 加入標題 : 準備好享受夏威夷風情了嗎? 現在開始準備
+    7. 加入<button>
+
+
+    ======第2頁============
+    8. 建立第2個section
+    9. 在第2個section裡加入標題<h2>
+    10.再建立一個容器section
+    11.容器裡面放3個div,代表3張卡片
+
+    12. 給img加上title(參考html筆記第7點)
+
+    13. 圖片動畫
+        -在img外面增加一個image-container
+           
+-->
+
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="我們提供夏威夷旅遊租借服務，例如: 衝浪板 車子 帳篷等等。" />
+    <meta name="robots" content="index,follow"/>
+    <title>夏威夷旅遊租借服務 | 夏威夷最方便快速的旅遊出租服務網站</title>
+
+    <!-- google font setting -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style/base.css" />
+    <link rel="stylesheet" href="./style/first.css" />
+</head>
+<body>
+    <!-- 標題 -->
+    <header>
+        <div class="logo">
+            <img src="./Icons/black logo.svg" alt="Logo">
+            <h1>夏威夷旅遊租借服務</h1>
+        </div>
+
+        <!-- 導覽列 -->
+        <nav>
+            <ul>
+                <li><a href="#">首頁</a> </li>
+                <li><a href="#">關於我們</a> </li>
+                <li><a href="#">會員登入</a> </li>
+                <li><a href="#">聯絡我們</a> </li>
+            </ul>
+        </nav>
+    </header>
+
+    
+
+    <!-- 主要內容 -->
+    <main>
+        <!-- image part of the first page -->
+        <section class="backImage">
+            <div class="filter"></div>
+            <h3>
+                準備好享受夏威夷風情了嗎?
+                <br/>
+                現在開始準備
+            </h3>
+            <button class="start">現在開始</button>         
+        </section>    
+        
+        <!-- second page -->
+        <section class="page2">
+            <h2>
+                透過給予最好的品質以及服務，我們幫助您獲得最好的<br/>
+                <span id="h2SecondLine">夏威夷旅遊經驗</span>
+            </h2>
+
+            <section class="cards">          
+                <div class="card">
+                    <div class="image-container">
+                        <img src="./Pictures/braden-jarvis-prSogOoFmkw-unsplash.jpg" title="夏威夷群島山脈" alt="picture"> 
+                    </div>
+                    <h4>快速運送</h4>
+                    <p>我們承諾在一個工作天之內，送達您所訂購的物品。夏威夷群島境內都適用，請您放心訂購，我們送達!</p>
+                    <a href="#">運送地點</a>     
+                </div>
+
+                <div class="card">
+                    <div class="image-container">
+                        <img src="./Pictures/sean-o-KMn4VEeEPR8-unsplash.jpg" title="夏威夷海灘" alt="picture">
+                    </div>
+                    
+                    <h4>付款方便</h4>
+                    <p>信用卡，現金，銀行轉帳，以及其他熱門付款方式，都可以使用。看連結了解更多付款方式以及選擇</p>
+                    <a href="#">了解更多</a>
+                </div>
+
+                <div class="card">
+                    <div class="image-container">
+                        <img src="./Pictures/tatonomusic-FFCgotROOTY-unsplash.jpg" title="衝浪板出租" alt="picture">
+                    </div>
+                    
+                    <h4>種類多樣</h4>
+                    <p>超過3000種商品都可以租借，商品均通過篩檢，保證您到的商品絕對滿意。</p>
+                    <a href="#">線上搜尋</a>
+                </div>
+
+            </section>
+         
+        </section>
+    </main>
+
+    <!-- 置底內容 -->
+    <footer>
+        
+        <div class="logo">
+            <img src="./Icons/black logo.svg" alt="Logo">
+            <h1>夏威夷旅遊租借服務</h1>
+        </div>
+
+        <ul class="nav">
+            <li><a href="#">Home</a> </li>
+            <li><a href="#">About</a> </li>
+            <li><a href="#">Login</a> </li>
+            <li><a href="#">Contact</a> </li>
+        </ul>
+
+
+        <ul class="link">
+            <li><a href="#"><img src="./Icons/facebook.svg" alt="fb"></a> </li>
+            <li><a href="#"><img src="./Icons/instagram.svg" alt="ig"></a> </li>
+            <li><a href="#"><img src="./Icons/youtube.svg" alt="yt"></a> </li>
+            <li><a href="#"><img src="./Icons/twitter.svg" alt="twitter"></a> </li>
+        </ul>
+
+
+    </footer>
+    
+</body>
+<script src="./app.js"></script>
+</html>

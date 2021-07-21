@@ -1,0 +1,326 @@
+
+/*
+
+    17. 設定section.backImage
+        -background-image: url("../Pictures/pexels-photo-416676.jpeg");
+        -background-size: cover;
+        -background-position: center;
+    18. 開始處理filter :
+        -設定顏色為全黑（rgba）
+        -調整透明度（alpha = 0.2）
+    19. 設定filter寬高
+        設定完filter發現完全沒有動靜,
+        按F12可以發現高度是0,
+        所以設定:
+        -min-height: 90vh;
+        -width: 100%;
+    20. 設定filter位置
+        可以發現標題和button都被擠到最下面了,
+        因為在html裡的排版是先div ->h3 ->button,
+        所以將div.filter設定成position: absolute,
+        如此變不受html順序排版的影響,
+        又因為absolute特性(參考筆記第14點),
+        所以得將上層(section.backImage)設定成position:relative
+    21. 設定filter z軸
+        因為字也受到filter也變黑了,
+        所以設定div.filter的z-index: -1,
+        讓filter退到後面去,
+        保險起見,
+        設定section.backImage的z-index: 0
+    22. 設定文字位置和按鈕位置(參考筆記第24點)
+        在section.backImage:
+        -display: flex;
+        -justify-content:center;
+        -align-items:center;
+        -flex-direction: column; ->讓按紐到文字下方
+        -text-align: center; ->設定文字上下行都置中
+    23. 設定文字大小和顏色
+    24. 設定按鈕 button.start
+        -border : none; (參考筆記第16點)
+        -padding: 0.75rem 1.5rem;
+        -cursor: pointer; (參考筆記第18點)
+
+    
+    ======第2頁============
+    25. section.cards設定為橫向排列
+        -可畫方框來輔助排版
+    26. section.cards設定為width: 80%;
+    27. 統一3張卡片的圖片大小
+    28. 把圖片變成圓形
+    29. 設定section.page2(參考筆記第24點)
+        -display: flex;
+        -align-items:center;
+        -flex-direction: column; ->讓按紐到文字下方
+        -text-align: center; ->設定文字上下行都置中
+    30. 更改h2第2行顏色
+    31. 更改h2大小
+    32. 把每個卡片都改成flex
+    33. 讓每個卡面裡的內容有間格
+        -section.cards的height: 80vh; ->給parant一個高度,這樣才能設定卡片裡的內容
+        -div.card裡設定justify-content:space-around;
+    34. 接下來只要微調一些文字大小
+        -讓每個卡片寬度一樣 : flex: 1 1 300px;
+        -調整 h4 p a的顏色 大小 padding
+    35. 拿掉輔助方框
+
+    36. Accessibility(筆記第27點)
+        -修正Contrast ->button.start color
+        -修正Txet Label in html ->img少了alt
+
+    37 圖片動畫
+       -把img包進hml設定的image-container
+       -設定img:hover
+       -把image-container設定的跟img寬高,形狀都一樣
+       -把image-container設定overflow: hidden;
+       -img裡設定轉場延遲(參考筆記第19點)
+
+    
+        
+
+*/
+
+
+main{
+    section.backImage{
+        min-height: 90vh;
+        width: 100%;
+        background-image: url("../Pictures/pexels-photo-416676.jpeg");
+        background-size: cover;
+        background-position: center;
+
+        position:relative;
+        z-index: 0;
+
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction: column; //讓按紐到文字下方
+        text-align: center; //設定文字上下行都置中
+
+        div.filter{
+
+            background-color:rgba($color: #000000, $alpha:0.2);
+            min-height: 90vh;
+            width: 100%;
+
+            position: absolute;
+            top: 0;
+            z-index: -1;
+        }
+
+        //設定文字大小和顏色
+        h3{
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        //設定按鈕
+        button.start{
+            //color: white;
+            color: #000000; // Fix Contrast issue
+            background-color: #3BF0E5;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 1rem;
+
+            cursor: pointer; 
+
+            &:hover{
+                background-color: #2fd6cb;
+            }
+            
+        }
+
+       
+    }
+
+    section.page2{
+       // min-height: 100vh;
+
+        display: flex; 
+        align-items:center;
+        flex-direction: column; //讓按紐到文字下方
+        text-align: center; //設定文字上下行都置中
+
+        
+        h2 {
+            
+            // 更改h2第2行顏色
+            span#h2SecondLine{
+                color: #12948C;
+            }
+
+            // 更改h2大小
+            font-size: 2rem;
+
+            margin: 2rem 0rem;
+            
+        }
+
+
+        section.cards{
+            display: flex;
+            flex-wrap: wrap;
+            width: 80%;
+            //height: 80vh;
+            min-height: 80vh; //要設定成min-height,不然footer會有問題
+
+            // 畫方框來輔助排版
+            //border: 2px solid red;
+            div.card{
+
+                // 畫方框來輔助排版
+                //border: 2px solid blue;
+
+                // 把每個卡片都改成flex
+                display: flex;
+                flex-direction: column;
+                align-items: center; // 圖片置中
+
+                justify-content:space-around;
+
+                padding: 1rem;
+                flex: 1 1 300px; //讓每個卡片寬度一樣
+
+                div.image-container{
+                    img:hover{
+                        transform: scale(1.2); //放大
+                    }
+                    overflow: hidden; //超出外框的部分都隱藏
+
+                    //外框跟img寬高,形狀都一樣
+                    width: 15vw;
+                    height: 15vw;
+                    border-radius: 50%;                 
+                    img{
+                        // 統一3張卡片的圖片大小
+                        width: 15vw;
+                        height: 15vw;
+        
+                        // 把圖片變成圓形
+                        border-radius: 50%;
+    
+                        margin: 1rem 0rem;
+
+                        transition: all 0.2s; //延遲0.2秒
+                    }
+                }
+                
+
+                h4{
+                    font-size: 2rem;
+                    margin: 1rem 0rem;
+                }
+                p{
+                    font-size: 1.25rem;
+                }
+                a{
+                    text-decoration: none;
+                    padding: 1rem 1.5rem;
+                    background-color: #09777D;
+                    color: white;
+                    font-size: 1.25rem;
+                    margin: 1rem 0rem;
+                }
+            }
+
+            
+        }
+    }
+}
+
+
+@media screen and (max-width:750px) {
+    main{
+        section.page2{
+            section.cards{
+                div.card{
+                    img{
+                        width: 40vw;
+                        height: 40vw;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(207, 207, 207);
+    div.logo{
+        display: flex;
+        align-items: center;
+        margin: 2rem 0rem;
+        img{
+            width: 6vw;
+            height: 6vw;
+        }
+    }
+
+    ul.nav{
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        width: 40%;
+        justify-content: space-around;
+        
+        li{     
+            a{
+                text-decoration: none ;
+                color: #000000;
+                font-size: 1.5rem;
+                padding: 0rem 1rem;
+           
+            }
+        }
+    }
+
+    ul.link{
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        align-items: center;
+        width: 50%;
+        justify-content: space-around;
+        margin: 2rem 0rem;
+        li{
+            a{
+                img{
+                    width: 5vw;
+                    height: 5vw;
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width:550px) {
+    footer{
+        div.logo{
+            margin-left: 0.5rem;
+            img{
+                width: 15vw;
+                height: 15vw;
+            }
+        }
+
+        ul.link{
+            li{
+                a{
+                    img{
+                        width: 10vw;
+                        height: 10vw;
+                    }
+                }
+            }
+        }
+    }
+    
+    
+}
