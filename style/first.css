@@ -116,6 +116,7 @@ main section.backImage::before {
   top: 0;
   left: 0;
   opacity: 0.2;
+  z-index: -1;
 }
 
 main section.backImage h3 {
